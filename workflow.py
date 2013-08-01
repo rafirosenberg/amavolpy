@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-
+w
 import photos, photos_children, mapper, optioner, child_photos_renamer
 import shutil, os, csv
 
 
 def just_do_it():
     print('starting mapper.py')
-    mapper.combine_all_files(os.getcwd(), 'results/master_list.csv')
+    mapper.map_it(os.getcwd(), 'results/master_list.csv')
     print('starting optioner.py')
     start=1
     for i in os.listdir(os.getcwd()):
