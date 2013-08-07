@@ -5,7 +5,6 @@ import csv, os
 def map_it(directory, price_source, new_file ):
     orders=open(price_source, 'rt')
     orders_list = list(csv.DictReader(orders))
-    
     items_accounted_for= []
 
     with open(new_file, 'at') as new_file:
@@ -25,8 +24,8 @@ def map_it(directory, price_source, new_file ):
                                         if line.get('SKU') not in items_accounted_for:
                                             items_accounted_for.append(line.get('SKU'))
                                             new_row = {
-                                            'ParentSKU':line.get('ParentSKU'),
-                                            'productcode':line.get('SKU'),
+                                            'ParentSKU':item.get('ParentSKU'),
+                                            'productcode':item.get('SKU'),
                                             'price':item.get('price')}
                                             writer.writerow(new_row)
                                             print(new_row)
@@ -34,7 +33,7 @@ def map_it(directory, price_source, new_file ):
     orders.close()
                                 
 if __name__ == '__main__':
-    map_it('../originals', '../11900676233-1.txt','../prices.csv')
+    map_it('../input/originals', '../input/from site/orders.csv','../output/prices.csv')
                         
                     
                 

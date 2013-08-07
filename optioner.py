@@ -2,14 +2,14 @@
 
 import os, csv
 
-def make_optionIds(src, start):
+def make_optionIds(src, start, results):
     options = []
     parents_w_options = []
     oid = start
-    options_list = open('results/options.csv', 'at')
+    options_list = open(os.path.join(results,'options.csv'), 'at')
     writer1 = csv.DictWriter(options_list,('optionsdesc','id','optioncatid'))
     writer1.writeheader()
-    options_ids_list = open('results/optionsids.csv', 'at')
+    options_ids_list = open(os.path.join(results,'masters_options.csv'), 'at')
     writer2 = csv.DictWriter(options_ids_list,('productcode', 'optionsid'))
     writer2.writeheader()
 
@@ -49,6 +49,6 @@ if __name__ == '__main__':
         if os.path.isfile(i):
             if i.split('.')[-1] == 'csv':
                 print(start,'opening file: %s' %(i))
-                a = make_optionIds(i,start)
+                a = make_optionIds(i,start,wherever)
                 start = a
                 
